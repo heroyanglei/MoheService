@@ -1,0 +1,21 @@
+spring:
+  data:
+    mapper-locations: classpath*:/com/piggymetrics/mybatis/mysql/mappers/*Mapper.xml
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://${MYSQL_HOST}:${MYSQL_TCP_PORT}/${MYSQL_DATABASE:horus_spark}?useUnicode=true&characterEncoding=UTF8&autoReconnect=true
+    username: root
+    password: ${MYSQL_ROOT_PASSWORD}
+    test-on-borrow: true
+    test-while-idle: true
+    validationQuery: SELECT 1
+    validationInterval: 28000
+    removeAbandoned: true
+    logAbandoned: true
+
+
+server:
+  servlet:
+    context-path: /mybatis
+  port: ${PORT}
